@@ -23,10 +23,15 @@
             android:text="Register"
             android:textSize="50dp" />
         <EditText
-            android:id="@+id/edReUser"
+            android:id="@+id/edReDis"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
+            android:hint="Displayname"/>
+        <EditText
+            android:id="@+id/edReUser"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:hint="Username"/>
         <EditText
             android:id="@+id/edRePass"
@@ -42,7 +47,7 @@
             android:id="@+id/btReRegis"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="200dp"
+            android:layout_marginTop="100dp"
             android:text="REGISTER" />
     </LinearLayout>
 
