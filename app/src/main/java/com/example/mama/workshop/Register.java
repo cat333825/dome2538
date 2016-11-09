@@ -31,9 +31,8 @@ public class Register extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
-
-        bindWidget();
         setListener();
+        bindWidget();
         validate();
     }
 
@@ -52,7 +51,7 @@ public class Register extends AppCompatActivity {
         if (!password.equals(passwordConfirm)) return false;
 
         if (displayName.isEmpty()) return false;
-        return false;
+        return true;
     }
 
     private void bindWidget() {
@@ -60,12 +59,13 @@ public class Register extends AppCompatActivity {
         edReUser = (EditText) findViewById(R.id.edReUser);
         edRePass = (EditText) findViewById(R.id.edRePass);
         edReCon = (EditText) findViewById(R.id.edReCon);
+        btRegister = (Button) findViewById(R.id.btRegis);
 
 
     }
 
     private void setListener(){
-        btRegister = (Button) findViewById(R.id.btRegis);
+        btRegister = (Button) findViewById(R.id.btReRegis);
         btRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -139,9 +139,10 @@ public class Register extends AppCompatActivity {
             try {
                 JSONObject rootObj = new JSONObject(s);
                 if(rootObj.has("result")){
-                    JSONObject resultObj = rootObj.getJSONObject("resilt");
+                    JSONObject resultObj = rootObj.getJSONObject("result");
                     if(resultObj.getInt("result") == 1) {
                         Toast.makeText(Register.this, resultObj.getString("result_desc"), Toast.LENGTH_SHORT).show();
+                        finish();
                     }else {
                         Toast.makeText(Register.this, resultObj.getString("result_desc"), Toast.LENGTH_SHORT).show();
                     }

@@ -37,17 +37,18 @@
             android:id="@+id/edRePass"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Password"/>
+            android:hint="Password"
+            android:inputType="textPassword"/>
         <EditText
             android:id="@+id/edReCon"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Password Confirm"/>
+            android:hint="Password Confirm"
+            android:inputType="textPassword"/>
         <Button
             android:id="@+id/btReRegis"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="100dp"
             android:text="REGISTER" />
     </LinearLayout>
 
