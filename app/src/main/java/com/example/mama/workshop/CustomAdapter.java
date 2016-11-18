@@ -1,5 +1,6 @@
 package com.example.mama.workshop;
 
+import android.app.Activity;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,26 +9,29 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.example.mama.workshop.entity.News;
+
+import java.util.List;
+
 /**
  * Created by Mama on 11/4/2016.
  */
 
 public class CustomAdapter extends BaseAdapter {
     Context mContext;
-    String[] NewsName;
-    String[] DateName;
-    int[] resId;
+    List<News>data;
 
-    public CustomAdapter(Context context, String[] NewsName,String[] DateName, int[] resID) {
+
+    public CustomAdapter(Context context,List<News>data) {
         this.mContext = context;
-        this.NewsName = NewsName;
-        this.DateName = DateName;
-        this.resId = resID;
+        this.data = data;
     }
+
 
     @Override
     public int getCount() {
-        return NewsName.length;
+        return data.size();
 
     }
 
@@ -63,9 +67,11 @@ public class CustomAdapter extends BaseAdapter {
         }
 
         // ต้อง set ค่าที่จะให้แสดงผลกับแต่ละ widget
-        myHolder.tvNews.setText(NewsName[position]);
-        myHolder.tvDate.setText(DateName[position]);
-        myHolder.imgAnd.setImageResource(resId[position]);
+        News news = data.get(position);
+        myHolder.tvNews.setText(news.getTitle());
+        myHolder.tvDate.setText(news.getCreateDate());
+        Glide.with(mContext).load(news.getImageUrl()).into(myHolder.imgAnd);
+        //myHolder.imgAnd.setImageResource(news.getImageUrl());
 
 
 

@@ -17,18 +17,21 @@
         android:orientation="vertical">
 
         <ImageView
+            android:id="@+id/imgDetail"
             android:layout_width="151dp"
             android:layout_height="172dp"
-            android:background="@drawable/and"
             android:layout_gravity="center"
             android:layout_marginTop="20dp"/>
         <TextView
+            android:id="@+id/tvNewsDetail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="หัวข้อข่าว"
             android:textSize="20dp"
-            android:layout_marginTop="20dp"/>
+            android:layout_marginTop="20dp"
+            android:textStyle="bold"/>
         <TextView
+            android:id="@+id/tvTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="รายละเอียดข่าว"

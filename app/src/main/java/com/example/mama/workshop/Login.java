@@ -41,16 +41,16 @@ public class Login extends AppCompatActivity {
 
         if (username.isEmpty()) return false;
 
-        if (password.isEmpty()) return  false;
+        if (password.isEmpty()) return false;
 
         return true;
     }
 
     private void setListener() {
-        btLog = (Button)findViewById(R.id.btLog);
-        btRegis = (Button)findViewById(R.id.btRegis);
-        edUser = (EditText)findViewById(R.id.edUser);
-        edPass = (EditText)findViewById(R.id.edPass);
+        btLog = (Button) findViewById(R.id.btLog);
+        btRegis = (Button) findViewById(R.id.btRegis);
+        edUser = (EditText) findViewById(R.id.edUser);
+        edPass = (EditText) findViewById(R.id.edPass);
 
         btLog.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -59,8 +59,8 @@ public class Login extends AppCompatActivity {
                     //ToDo
                     new Login.Login2(edUser.getText().toString(),
                             edPass.getText().toString()).execute();
-                }else{
-                    Toast.makeText(Login.this,"กรุณากรอกข้อมูลให้ครบ", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(Login.this, "กรุณากรอกข้อมูลให้ครบ", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -73,6 +73,7 @@ public class Login extends AppCompatActivity {
             }
         });
     }
+
     private class Login2 extends AsyncTask<Void, Void, String> {
 
         private String username;
@@ -113,19 +114,20 @@ public class Login extends AppCompatActivity {
 
             return null;
         }
+
         @Override
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
-            Toast.makeText(Login.this,s,Toast.LENGTH_SHORT).show();
+            Toast.makeText(Login.this, s, Toast.LENGTH_SHORT).show();
 
             try {
                 JSONObject rootObj = new JSONObject(s);
-                if(rootObj.has("result")){
+                if (rootObj.has("result")) {
                     JSONObject resultObj = rootObj.getJSONObject("result");
-                    if(resultObj.getInt("result") == 1) {
+                    if (resultObj.getInt("result") == 1) {
                         Intent i = new Intent(Login.this, NewsList.class);
                         startActivity(i);
-                    }else {
+                    } else {
                         Toast.makeText(Login.this, resultObj.getString("result_desc"), Toast.LENGTH_SHORT).show();
                     }
                 }
